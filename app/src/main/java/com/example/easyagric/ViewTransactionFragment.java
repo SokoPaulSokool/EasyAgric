@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.example.easyagric.helpers.FragmentCommunication;
 import com.example.easyagric.models.Transaction;
@@ -28,6 +29,7 @@ public class ViewTransactionFragment extends DialogFragment implements View.OnCl
     protected TextView date;
     protected Button delete;
     protected CardView singleItemView;
+    protected Button editBtn;
     Transaction transaction;
 
     FragmentCommunication fragmentCommunication;
@@ -51,10 +53,10 @@ public class ViewTransactionFragment extends DialogFragment implements View.OnCl
         View view = inflater.inflate(R.layout.fragment_view_transaction, container);
         initView(view);
         name.setText(transaction.getName());
-        price.setText(transaction.getPrice()+"");
-        quantity.setText(transaction.getQuantity()+"");
+        price.setText(transaction.getPrice() + "");
+        quantity.setText(transaction.getQuantity() + "");
         date.setText(transaction.getDate());
-        return  view;
+        return view;
     }
 
     @Override
@@ -63,6 +65,11 @@ public class ViewTransactionFragment extends DialogFragment implements View.OnCl
             fragmentCommunication.sendTransAction(transaction, "delete");
             dismiss();
 
+        } else if (view.getId() == R.id.edit_btn) {
+            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+            EditFragment editFragment = new EditFragment(transaction);
+            editFragment.show(fragmentManager, "editTransactionFragment");
+            dismiss();
         }
     }
 
@@ -74,5 +81,7 @@ public class ViewTransactionFragment extends DialogFragment implements View.OnCl
         delete = (Button) rootView.findViewById(R.id.delete);
         delete.setOnClickListener(ViewTransactionFragment.this);
         singleItemView = (CardView) rootView.findViewById(R.id.single_item_view);
+        editBtn = (Button) rootView.findViewById(R.id.edit_btn);
+        editBtn.setOnClickListener(ViewTransactionFragment.this);
     }
 }

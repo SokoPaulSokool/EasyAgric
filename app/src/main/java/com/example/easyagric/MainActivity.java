@@ -152,6 +152,16 @@ public class MainActivity extends AppCompatActivity implements FragmentCommunica
             currentLength--;
         }
 
+        if(action.equals("edit")){
+            int id = transaction.getId();
+            for(int i = 0; i< transactionArrayList.size(); i++){
+                if(transactionArrayList.get(i).getId() == id){
+                    transactionArrayList.set(i, transaction);
+                }
+            }
+          currentLength = transactionArrayList.size();
+        }
+
 
 
         slimAdapter.updateData(transactionArrayList);

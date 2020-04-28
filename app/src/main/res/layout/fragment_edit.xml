@@ -15,7 +15,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Transaction"
+            android:text="Edit transaction"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -30,7 +30,7 @@
                 android:layout_weight="2"
                 android:text="Name" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
                 android:layout_weight="2"
                 android:text="Quantity" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/quantity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -69,7 +69,7 @@
                 android:layout_weight="2"
                 android:text="Price" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -88,7 +88,7 @@
                 android:layout_weight="2"
                 android:text="Date" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -96,30 +96,13 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <LinearLayout
+        <Button
             android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
-            <Button
-                android:layout_weight="1"
-                android:layout_margin="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/colorPrimary"
-                android:textColor="#ffffff"
-                android:id="@+id/delete"
-                android:text="Delete"/>
-            <Button
-                android:layout_weight="1"
-                android:layout_margin="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/colorPrimary"
-                android:textColor="#ffffff"
-                android:id="@+id/edit_btn"
-                android:text="Edit"/>
-        </LinearLayout>
-
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+            android:textColor="#ffffff"
+            android:id="@+id/edit_btn"
+            android:text="Edit"/>
     </LinearLayout>
 
 
