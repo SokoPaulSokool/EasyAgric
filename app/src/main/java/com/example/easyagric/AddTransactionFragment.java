@@ -78,7 +78,7 @@ public class AddTransactionFragment extends DialogFragment implements View.OnCli
             String quantityStr = quantity.getText().toString().trim();
             String dateStr = date.getText().toString().trim();
             String priceStr = price.getText().toString().trim();
-//            martinkatamba@gmail
+//            martinkatamba@gmail.com
             if(!TextUtils.isEmpty(nameStr) && !TextUtils.isEmpty(quantityStr) && !TextUtils.isEmpty(dateStr) && !TextUtils.isEmpty(priceStr) ){
                 Transaction transaction = new Transaction(nameStr,
                         Integer.parseInt(quantityStr),

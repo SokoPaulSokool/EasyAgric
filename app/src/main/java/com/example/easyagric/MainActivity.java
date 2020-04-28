@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements FragmentCommunica
     SlimAdapter slimAdapter;
 
     int currentLength = 0;
+    int total = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements FragmentCommunica
         super.setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        initView();
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -69,9 +71,15 @@ public class MainActivity extends AppCompatActivity implements FragmentCommunica
             transactionArrayList = gson.fromJson(data, itemDetailsType);
             currentLength = transactionArrayList.size();
             Log.e("dd",data);
+
+
         } else {
             transactionArrayList = new ArrayList<>();
         }
+
+        calculateTotal();
+
+
 
 
         transactionListRecyclerView = findViewById(R.id.transaction_list_recycler_view);
@@ -105,9 +113,17 @@ public class MainActivity extends AppCompatActivity implements FragmentCommunica
                 .attachTo(transactionListRecyclerView);
 
         slimAdapter.updateData(transactionArrayList);
-        initView();
 
 
+
+    }
+
+
+    void calculateTotal(){
+        for(Transaction tt : transactionArrayList){
+            total = total+tt.getPrice();
+        }
+        totalPrice.setText(total+"");
     }
 
     @Override
@@ -165,6 +181,7 @@ public class MainActivity extends AppCompatActivity implements FragmentCommunica
 
 
         slimAdapter.updateData(transactionArrayList);
+        calculateTotal();
 
     }
 
